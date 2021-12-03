@@ -7,18 +7,43 @@
   </head>
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-    }
-    li {
-      list-style: none;
-    }
     body {
       padding: 20px;
     }
-    a {
-      text-decoration: none;
+    .toady_cast {
+      border: 1px solid black;
+      width: 755px;
+      padding: 10px;
+    }
+    .toady_cast > h3 {
+      border-bottom: 2px solid #444;
+      padding: 0 0 10px 12px;
+      margin-bottom: 20px;
+    }
+    .toady_cast > ul {
+      margin-left: 23px;
+      overflow: hidden;
+    }
+    .toady_cast > ul > li {
+      float: left;
+      width: 127px;
+    }
+    .toady_cast > ul > li + li {
+      margin-left: 19px;
+    }
+    .toady_cast > ul > li > a > img {
+      padding: 3px;
+      border: 1px solid #e4e4e4;
+    }
+    .toady_cast > ul > li > a > * {
+      display: block;
+    }
+    .toady_cast > ul > li > a > strong {
+      margin: 5px 0 1px;
+    }
+    .toady_cast > .page {
+      position: absolute;
+      border: 1px solid red;
     }
   </style>
 
