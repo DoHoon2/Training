@@ -28,16 +28,27 @@
       .tab > li {
         display: inline-block;
       }
-      .tab > li + li {
-        margin-left: 2px;
+      .tab > li ~ li {
+        margin: left 2px;
       }
       .tab > li > a {
+        position: relative;
         font-size: 16px;
+        line-height: 2;
         padding: 10px 20px 8px;
         display: block;
         color: white;
         background-color: black;
         border-radius: 10px 10px 0 0;
+      }
+      .tab > li > a:hover::after {
+        content: '';
+        border: 5px solid red;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
       }
       ul + p {
         border: 1px solid red;
