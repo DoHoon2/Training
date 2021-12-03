@@ -26,6 +26,7 @@
       width: 300px;
       padding: 20px;
       height: auto;
+      margin-bottom: 20px;
       /*overflow: hidden; // 떠있는 플로우를 감지*/
       /*display: inline-block; // margin:0 auto 값이 안됨*/
       /* float: left; */
@@ -68,10 +69,12 @@
       width: 750px;
       border: 2px solid black;
       padding: 20px;
-      overflow: hidden;
+      /* overflow: hidden; // 막내자식 clearboth 가 생겨서 필요 없어짐*/
     }
     .bottom {
       border: 2px solid red;
+      clear: both;
+      padding: 10px;
     }
   </style>
   <body>
