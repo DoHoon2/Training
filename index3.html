@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      list-style: none;
+    }
+    body {
+      padding: 20px;
+    }
+    a {
+      text-decoration: none;
+    }
+
+    .mother {
+      border: 2px solid lime;
+      width: 300px;
+      padding: 20px;
+      height: auto;
+      /*overflow: hidden; // 떠있는 플로우를 감지*/
+      /*display: inline-block; // margin:0 auto 값이 안됨*/
+      /* float: left; */
+      /* position: absolute; */
+      /* display: table-cell; */
+      /* margin: 0 auto; // 가운데 정렬 */
+    }
+    .mother.left {
+      float: left;
+    }
+    .mother.right {
+      float: right;
+    }
+    .mother > .photo {
+      /* 1 */
+      border: 10px solid lime;
+      width: 100px;
+      height: 100px;
+      float: left;
+      margin-right: 20px;
+      /* margin-left: -50px; */
+    }
+    .mother > p {
+      /* 2 */
+      margin-left: 20px;
+      border: 1px solid blue;
+      /* float: left; */
+    }
+    body > p {
+      border: 1px solid red;
+    }
+    /* .mother ::after { // 3 // 마더가 float으로 떠있어서 할머니의 overflow와 상관없음
+      content: '';
+      border: 1px solid purple;
+      clear: left;
+      display: block;
+    } */
+    .grandmom {
+      /* 4 */
+      width: 750px;
+      border: 2px solid black;
+      padding: 20px;
+      overflow: hidden;
+    }
+    .bottom {
+      border: 2px solid red;
+    }
+  </style>
+  <body>
+    <div class="grandmom">
+      <div class="mother left">
+        <div class="photo"></div>
+        <p>LEFT.HTML은 선형적(linearity)입니다.</p>
+        <!-- <div class="fix">ddd</div> -->
+      </div>
+      <div class="mother right">
+        <div class="photo"></div>
+        <p>LEFT.HTML은 선형적(linearity)입니다.</p>
+        <!-- <div class="fix">ddd</div> -->
+      </div>
+      <div class="bottom">LEFT.HTML은 선형적(linearity)입니다.</div>
+    </div>
+  </body>
+</html>
