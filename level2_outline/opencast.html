@@ -49,14 +49,30 @@
         border: 1px solid blue;
       }
       .opencast_top > .caslist {
+        position: relative;
         float: right;
+        margin: 9px 15px 0 0;
       }
       .opencast_top > .caslist > .btn {
         border: 1px solid #999;
         display: block;
         width: 99px;
-        height: 17px;
-        padding: 5px 0 0 12px;
+        height: 18px;
+        padding: 4px 0 0 12px;
+        background: url('images/bul_down.gif') no-repeat 99px 10px;
+      }
+      .opencast_top > .caslist > ul {
+        position: absolute;
+        padding: 10px;
+        top: 23px;
+        left: 0;
+        right: 0;
+        border: 1px solid #999;
+        background-color: white;
+        display: none;
+      }
+      .opencast > .caslist > ul.on {
+        display: block;
       }
     </style>
   </head>
@@ -77,7 +93,7 @@
         </ul>
         <div class="caslist">
           <a href="#" class="btn">캐스트목록</a>
-          <ul style="display: none">
+          <ul>
             <li><a href="#">공감플러스</a></li>
             <li><a href="#">공감플러스</a></li>
             <li class="on"><a href="#">공감플러스</a></li>
