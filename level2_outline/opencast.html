@@ -13,24 +13,50 @@
         border: 1px solid #999;
         width: 593px;
         height: 191px;
+        letter-spacing: -1px;
+        /* letter-spacing // 밀도감, 촘촘하게 하고싶다 */
       }
       .opencast_top {
         border-bottom: 1px solid #999;
         height: 42px;
         background-color: lime;
-        /* 특별한 현상이 생겨 overflow:hidden; //bfc 새로 하여서 마진없애기 */
+        /* 부모를 뚫고나오는 특별한 현상이 생겨 overflow:hidden; //bfc 새로 하여서 마진없애기 */
         /* padding-top: 1px; height:41px; //으로 해도 마진 없애짐
          하지만 밑에 float:left가 좋음 */
+      }
+      .opencast_top > * {
+        border: 1px solid red;
       }
       .opencast_top > h3 {
         margin: 16px 0 0 17px;
         float: left;
       }
-      .opencast_top > .caslist {
-        display: none;
-      }
       .opencast_top > .category {
-        display: none;
+        float: left;
+        margin: 15px 0 0 8px;
+      }
+      .opencast_top > .category > li {
+        background: url('images/line_h.gif') no-repeat 0 2px;
+        border: 1px solid blue;
+        float: left;
+        padding: 0 5px 0 6px;
+      }
+      .opencast_top > .category > li:first-child {
+        background: none;
+        padding-left: 0;
+      }
+      .opencast_top > .category > li > a {
+        border: 1px solid blue;
+      }
+      .opencast_top > .caslist {
+        float: right;
+      }
+      .opencast_top > .caslist > .btn {
+        border: 1px solid #999;
+        display: block;
+        width: 99px;
+        height: 17px;
+        padding: 5px 0 0 12px;
       }
     </style>
   </head>
@@ -51,7 +77,7 @@
         </ul>
         <div class="caslist">
           <a href="#" class="btn">캐스트목록</a>
-          <ul class="display:none;">
+          <ul style="display: none">
             <li><a href="#">공감플러스</a></li>
             <li><a href="#">공감플러스</a></li>
             <li class="on"><a href="#">공감플러스</a></li>
