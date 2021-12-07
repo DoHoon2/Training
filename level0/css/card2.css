@@ -53,6 +53,30 @@ li {
 a {
   text-decoration: none;
 }
+/* common */
+.hide {
+  font-size: 0;
+}
+button {
+  border: none;
+  color: white;
+}
+button.small {
+  font-size: 10px;
+  padding: 5px 10px;
+  border-radius: 8px;
+}
+button.big {
+  font-size: 14px;
+  padding: 10px 25px;
+  border-radius: 8px;
+}
+button.green {
+  background-color: #27ae60;
+}
+button.red {
+  background-color: #eb5757;
+}
 
 /* card layout */
 .card {
@@ -72,6 +96,12 @@ a {
   font-weight: bold;
   color: black;
 }
+.writer {
+  color: 4f4f4f;
+  display: block;
+  font-size: 14px;
+  font-weight: 400;
+}
 
 /* photo */
 .photo > img {
@@ -82,15 +112,17 @@ a {
 .article {
   padding: 12px 16px;
 }
-.write {
-  color: 4f4f4f;
-  display: block;
+article > .writer {
   margin: 5px 0;
-  font-size: 14px;
-  font-weight: 400;
 }
 
-/* title */
+/* title_area */
+.title_area {
+  padding: 10px;
+}
+.title_area > .title {
+  margin: 5px 0;
+}
 
 /* index */
 .index {
