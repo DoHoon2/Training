@@ -3,11 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=
-    , initial-scale=1.0"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
       * {
@@ -25,18 +21,16 @@
         position: relative;
       }
       .kind_wrap > .kind_slider {
+        position: relative;
         overflow: hidden;
       }
-      .kind_wrap > .kind_slider > .slider {
-        /* border: 1px solid red; */
-        width: 2400px;
+      .kind_wrap > .kind_slider .slider {
+        position: absolute;
       }
-      .kind_wrap > .kind_slider > .slider > li {
-        /* border: 1px solid red; */
+      .kind_wrap > .kind_slider .slider > li {
         float: left;
-        width: 800px;
       }
-      .kind_wrap > .kind_slider > .slider > li img {
+      .kind_wrap > .kind_slider .slider > li img {
         vertical-align: top;
       }
       .kind_wrap .arrow > a.prev {
@@ -81,14 +75,15 @@
         const liWidth = slideLis[0].clientWidth;
         const sliderWidth = liWidth * slideLis.length;
         slider.style.width = sliderWidth + 'px';
-        console.log(slideLis[0], clientWidth);
+        console.log(slideLis[0].clientWidth);
+        let moveDist = 0;
 
         moveButton.addEventListener('click', moveSlide);
 
         function moveSlide(ev) {
           ev.preventDefault();
           console.log(ev.target.className);
-          if (e.target.className === 'next') {
+          if (ev.target.className === 'next') {
             moveDist += -liWidth;
             console.log(moveDist);
           } else {
