@@ -23,9 +23,12 @@
       .kind_wrap > .kind_slider {
         position: relative;
         overflow: hidden;
+        height: 200px;
       }
       .kind_wrap > .kind_slider .slider {
         position: absolute;
+        top: 0;
+        left: 0;
       }
       .kind_wrap > .kind_slider .slider > li {
         float: left;
@@ -77,6 +80,7 @@
         slider.style.width = sliderWidth + 'px';
         console.log(slideLis[0].clientWidth);
         let moveDist = 0;
+        let currentNum = 0;
 
         moveButton.addEventListener('click', moveSlide);
 
@@ -84,11 +88,28 @@
           ev.preventDefault();
           console.log(ev.target.className);
           if (ev.target.className === 'next') {
-            moveDist += -liWidth;
-            console.log(moveDist);
+            if (currentNum === slideLis.length - 1) {
+              currentNum = 0;
+              moveDist = 0;
+              slider.style.left = `${moveDist}px`;
+            } else {
+              currentNum++;
+              moveDist += -liWidth;
+              console.log(moveDist, currentNum);
+              slider.style.left = `${moveDist}px`;
+              // 백틱값을 줘서 px 값을 줌
+            }
           } else {
-            moveDist += liWidth;
-            console.log(moveDist);
+            if (currentNum === 0) {
+              currentNum = slideLis.length - 1;
+              moveDist = -(liWidth * currentNum);
+              slider.style.left = `${moveDist}px`;
+            } else {
+              currentNum--;
+              moveDist += liWidth;
+              console.log(moveDist, currentNum);
+              slider.style.left = `${moveDist}px`;
+            }
           }
         }
       };
