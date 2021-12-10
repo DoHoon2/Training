@@ -71,56 +71,62 @@
     </div>
     <script>
       window.onload = function () {
-        // 돔 준비
+        /* 돔 준비 */
         const kindWrap = document.querySelector('.kind_wrap');
         const slider = kindWrap.querySelector('.slider');
         const slideLis = slider.querySelectorAll('li');
         const moveButton = kindWrap.querySelector('.arrow');
         const liWidth = slideLis[0].clientWidth;
-        let moveDist = 0;
-        let currentNum = 0;
+        let moveDist = -liWidth; //최초 실행값
+        let currentNum = 1;
         let speedTime = 500;
 
-        // 클론 만들기
+        // 클론만들기
         const cloneA = slideLis[0].cloneNode(true);
         const cloneC = slideLis[slideLis.length - 1].cloneNode(true);
         console.log(cloneA, cloneC);
         slider.insertBefore(cloneC, slideLis[0]);
         slider.appendChild(cloneA);
 
-        // 넓이 구하기
-        const slidecloneLis = slider.querySelector('li');
-        const sliderWidth = liWidth * slidecloneLis.length;
+        /* 넓이 구하기 */
+        const slideCloneLis = slider.querySelectorAll('li');
+        const sliderWidth = liWidth * slideCloneLis.length;
         slider.style.width = sliderWidth + 'px';
-        console.log(slideLis[0].clientWidth);
-        slider.style.transition = 'all $(speedTime)ms ease';
+        slider.style.left = `${moveDist}px`;
 
         moveButton.addEventListener('click', moveSlide);
 
         function moveSlide(ev) {
           ev.preventDefault();
           if (ev.target.className === 'next') {
-            if (currentNum === slideLis.length - 1) {
-              retrun;
-              // currentNum = 0;
-              // moveDist = 0;
-              // slider.style.left = `${moveDist}px`;
-            } else {
-              move(-1);
+            move(-1);
+            if (currentNum === slideCloneLis.length - 1) {
+              setTimeout(() => {
+                slider.style.transition = 'none';
+                moveDist = -liWidth;
+                slider.style.left = `${-liWidth}px`;
+                currentNum = 1;
+                console.log(moveDist, currentNum);
+              }, speedTime);
             }
           } else {
+            move(1);
             if (currentNum === 0) {
-              retrun;
-              // currentNum = slideLis.length - 1;
-              // moveDist = -(liWidth * currentNum);
-              // slider.style.left = `${moveDist}px`;
-            } else {
-              move(1);
+              setTimeout(() => {
+                slider.style.transition = 'none';
+                moveDist = -liWidth * (slideCloneLis.length - 2);
+                slider.style.left = `${moveDist}px`;
+                currentNum = slideCloneLis.length - 2;
+                console.log(moveDist, currentNum);
+              }, speedTime);
             }
           }
           function move(direction) {
+            console.log('a');
             currentNum += -1 * direction;
             moveDist += liWidth * direction;
+            console.log(currentNum, moveDist);
+            slider.style.transition = `all ${speedTime}ms ease`;
             slider.style.left = `${moveDist}px`;
           }
         }
