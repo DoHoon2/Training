@@ -24,6 +24,8 @@ const kSlider = function(target, option) {
     /* 메인구간 - 돔 준비 */
     function innerName(target, option) {
         const slider = document.querySelector(`${target}`);
+        slider.classList.add('k_list');
+
         const kindSlider = document.createElement('div');
         const kindWrap = document.createElement('div');
         slider.parentNode.insertBefore(kindWrap, slider);
@@ -44,12 +46,25 @@ const kSlider = function(target, option) {
         moveButton.appendChild(prevA);
         moveButton.appendChild(nextA);
         kindWrap.appendChild(moveButton);
+        const slideLis = slider.querySelectorAll('.k_list > *');
+        slideLis.forEach( item => {
+            item.classList.add('k_item');
+        })
 
-        const slideLis = slider.querySelectorAll('li');
+        // 옵션 예외처리와 셋팅
+        const OPTION = ( option => {
+            const OPTION = {...option};
+            if (OPTION.speed <= 0) {
+                throw new Error('0이상의 값을 사용하세요')
+            } else {
+                return Object.freeze(OPTION);
+            }
+        })(option);
+        
         const liWidth = slideLis[0].clientWidth;
         let moveDist = -liWidth;
         let currentNum = 1;
-        let speedTime = option.speed;
+        let speedTime = OPTION.speed;
 
         // 클론만들기
         const cloneA = slideLis[0].cloneNode(true);
@@ -59,7 +74,7 @@ const kSlider = function(target, option) {
         slider.appendChild(cloneA);
 
         /* 넓이 구하기 */
-        const slideCloneLis = slider.querySelectorAll('li');
+        const slideCloneLis = slider.querySelectorAll('.k_list > *');
         const sliderWidth = liWidth * slideCloneLis.length;
         slider.style.width = sliderWidth + 'px';
         slider.style.left = `${moveDist}px`;
@@ -106,5 +121,4 @@ const kSlider = function(target, option) {
 
         } // 메인구간
     } // innerName end
-    
 }

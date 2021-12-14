@@ -19,15 +19,15 @@ li {
   overflow: hidden;
   height: 200px;
 }
-.kind_wrap > .kind_slider .slider {
+.kind_wrap > .kind_slider .k_list {
   position: absolute;
   top: 0;
   left: 0;
 }
-.kind_wrap > .kind_slider .slider > li {
+.kind_wrap > .kind_slider .k_list > .k_item {
   float: left;
 }
-.kind_wrap > .kind_slider .slider > li img {
+.kind_wrap > .kind_slider .k_list > .k_item img {
   vertical-align: top;
 }
 .kind_wrap .arrow > a.prev {
